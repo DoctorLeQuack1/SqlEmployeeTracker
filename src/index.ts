@@ -1,20 +1,23 @@
 import inquirer from 'inquirer';
-import { QueryResult } from 'pg';
-import { pool, connectToDb } from './assets/connections.js';
+import { connectToDb } from './assets/connections.js';
+import { Department } from './assets/tables/department.js';
+import { Employees } from './assets/tables/employees.js';
 
-const view_stuff = async (): Promise<void> => {
-    return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM department', (err: Error, result: QueryResult) => {
-            if (err) {
-                reject(err);  // Si hay un error, rechaza la promesa.
-            } else {
-                const formattedData = result.rows.map(({ id, name }) => ({ id, name }));
-                console.table(formattedData);  // Si es exitoso, imprime los resultados.
-                resolve();  // Resuelve la promesa cuando se completan los datos.
-            }
-        });
-    });
-};
+// const view_stuff = async (): Promise<void> => {
+//     return new Promise((resolve, reject) => {
+//         pool.query('SELECT * FROM department', (err: Error, result: QueryResult) => {
+//             if (err) {
+//                 reject(err);  // Si hay un error, rechaza la promesa.
+//             } else {
+//                 const formattedData = result.rows.map(({ id, name }) => ({ id, name }));
+//                 console.table(formattedData);  // Si es exitoso, imprime los resultados.
+//                 resolve();  // Resuelve la promesa cuando se completan los datos.
+//             }
+//         });
+//     });
+// };
+
+/*here we will define all of our const, including classes*/
 
 const main_menu_options : Array<object> = [
     {
@@ -26,16 +29,20 @@ const main_menu_options : Array<object> = [
         "Quit"]
     }
 ];
+
+const department_ = new Department();
+const employees_ = new Employees();
+
 /*This will be the entry point of the application, here we will prompt our main menu*/
 const options_ = async () : Promise<void> => {
     const ans = await inquirer.prompt(main_menu_options);
     switch (ans.init_option) {
         case "View All Employees":
-            await view_stuff();         
+
             break;
         
         case "Add Employees":
-        
+            await employees_.add_employee();
             break;
 
         case "Update Employee Role":
@@ -49,9 +56,13 @@ const options_ = async () : Promise<void> => {
         case "Add Roles":
         
             break;
+        
+        case "View All Departments":
+            await department_.view_department();
+            break;
             
         case "Add Department":
-        
+            await department_.department_prompts();
             break;
 
         case "Quit":
