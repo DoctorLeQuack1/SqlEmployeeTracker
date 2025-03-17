@@ -3,6 +3,8 @@ import { connectToDb } from './assets/connections.js';
 import { Department } from './assets/tables/department.js';
 import { Employees } from './assets/tables/employees.js';
 import { Roles } from './assets/tables/roles.js';
+import figlet from 'figlet';
+import colors from 'colors';
 // const view_stuff = async (): Promise<void> => {
 //     return new Promise((resolve, reject) => {
 //         pool.query('SELECT * FROM department', (err: Error, result: QueryResult) => {
@@ -63,5 +65,20 @@ const options_ = async () => {
     }
     await options_();
 };
-await connectToDb();
-await options_();
+figlet("Employee", async (err, data1) => {
+    if (err) {
+        console.log("Something went wrong...".red);
+        console.dir(err);
+        return;
+    }
+    figlet("Manager", async (err, data2) => {
+        if (err) {
+            console.log("Something went wrong...".red);
+            console.dir(err);
+            return;
+        }
+        console.log(colors.green(data1 + "\n" + data2));
+        await connectToDb();
+        await options_();
+    });
+});
