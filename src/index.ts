@@ -2,6 +2,7 @@ import inquirer from 'inquirer';
 import { connectToDb } from './assets/connections.js';
 import { Department } from './assets/tables/department.js';
 import { Employees } from './assets/tables/employees.js';
+import { Roles } from './assets/tables/roles.js';
 
 // const view_stuff = async (): Promise<void> => {
 //     return new Promise((resolve, reject) => {
@@ -32,13 +33,14 @@ const main_menu_options : Array<object> = [
 
 const department_ = new Department();
 const employees_ = new Employees();
+const roles_ = new Roles();
 
 /*This will be the entry point of the application, here we will prompt our main menu*/
 const options_ = async () : Promise<void> => {
     const ans = await inquirer.prompt(main_menu_options);
     switch (ans.init_option) {
         case "View All Employees":
-
+            await employees_.view_employees();
             break;
         
         case "Add Employees":
@@ -46,15 +48,15 @@ const options_ = async () : Promise<void> => {
             break;
 
         case "Update Employee Role":
-        
+            await roles_.update_role();
             break;
 
         case "View All Roles":
-        
+            await roles_.view_roles();
             break;
 
         case "Add Roles":
-        
+            await roles_.add_roles();
             break;
         
         case "View All Departments":
@@ -69,7 +71,7 @@ const options_ = async () : Promise<void> => {
             process.exit();
     
         default:
-            console.log("Something went wrong!");
+            console.log("❌ Something went wrong!");
             break;
     }
 

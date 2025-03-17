@@ -1,13 +1,14 @@
 import { pool } from '../connections.js';
+//Genral use queries
 export const select_query = async (table) => {
     try {
         const query = `SELECT * FROM ${table};`;
         const result = await pool.query(query);
-        console.log(result.rows);
-        console.table(result.rows);
+        return result.rows;
     }
     catch (error) {
         console.error(`❌ Error selecting from ${table} table:`, error.message);
+        return null;
     }
 };
 export const add_record = async (table, columns, values) => {

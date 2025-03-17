@@ -24,7 +24,8 @@ export class Department {
         await add_record("department", ["name"], [department_name]);
     };
     view_department = async () => {
-        await select_query("department");
+        const department_rows = await select_query("department");
+        console.table(department_rows);
     };
     /*Here we should create our options for department table*/
     department_prompts = async () => {

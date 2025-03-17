@@ -29,7 +29,8 @@ export class Department {
     };
 
     view_department = async (): Promise<void> => {
-        await select_query("department");
+        const department_rows = await select_query("department");
+        console.table(department_rows);
     };
 
     /*Here we should create our options for department table*/

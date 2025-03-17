@@ -1,12 +1,14 @@
 import { pool } from '../connections.js';
 
-export const select_query = async (table : string) => {
+//Genral use queries
+export const select_query = async (table : string) : Promise<Array<object> | null> => {
     try {
         const query = `SELECT * FROM ${table};`
         const result = await pool.query(query);
-        console.table(result.rows);
+        return result.rows;
     } catch (error : any) {
         console.error(`❌ Error selecting from ${table} table:`, error.message);
+        return null;
     }
 };
 
@@ -27,3 +29,4 @@ export const add_record = async (table: string, columns: string[], values: any[]
         console.error("❌ Error adding record:", error.message);
     }
 };
+
