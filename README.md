@@ -52,6 +52,8 @@ This project is covered under the MIT License.
 Refer to [MIT License](https://opensource.org/licenses/MIT) for more information.
 
 ## Questions
-Check out my other projects on GitHub: [DoctorLeQuack1](https://github.com/DoctorLeQuack1/SqlEmployeeTracker).  
+Check out my other projects on GitHub: [DoctorLeQuack1](https://github.com/DoctorLeQuack1).  
 For any questions regarding this project, reach out to me at: [sergioa430@gmail.com](mailto:sergioa430@gmail.com).
 
+## Video Demo
+Feel free to view a walkthrough demo of the project, access it though this link: [Module10Challenge - Employee Tracker](https://youtu.be/oMfI22-EnBs)
