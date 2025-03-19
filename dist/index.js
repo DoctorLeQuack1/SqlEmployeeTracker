@@ -5,20 +5,6 @@ import { Employees } from './assets/tables/employees.js';
 import { Roles } from './assets/tables/roles.js';
 import figlet from 'figlet';
 import colors from 'colors';
-// const view_stuff = async (): Promise<void> => {
-//     return new Promise((resolve, reject) => {
-//         pool.query('SELECT * FROM department', (err: Error, result: QueryResult) => {
-//             if (err) {
-//                 reject(err);  // Si hay un error, rechaza la promesa.
-//             } else {
-//                 const formattedData = result.rows.map(({ id, name }) => ({ id, name }));
-//                 console.table(formattedData);  // Si es exitoso, imprime los resultados.
-//                 resolve();  // Resuelve la promesa cuando se completan los datos.
-//             }
-//         });
-//     });
-// };
-/*here we will define all of our const, including classes*/
 const main_menu_options = [
     {
         type: "list",
