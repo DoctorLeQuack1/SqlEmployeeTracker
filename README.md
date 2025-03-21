@@ -33,7 +33,10 @@ npm install
 This will install all necessary dependencies.
 
 ## Usage
-To start the application locally, use the following command:
+Change `.env` file variables with your respective postgreSQL database configuration.
+Make sure to copy the contents from `sql/seeds.sql` to create each table and populate them.
+
+Once To start the application locally, use the following command:
 
 ```sh
 npm run build
@@ -56,4 +59,4 @@ Check out my other projects on GitHub: [DoctorLeQuack1](https://github.com/Docto
 For any questions regarding this project, reach out to me at: [sergioa430@gmail.com](mailto:sergioa430@gmail.com).
 
 ## Video Demo
-Feel free to view a walkthrough demo of the project, access it though this link: [Module10Challenge - Employee Tracker](https://youtu.be/oMfI22-EnBs)
+Feel free to view a walkthrough demo of the project, access it though this link: [Module10Challenge - Employee Tracker](https://www.youtube.com/watch?v=juLOkNmuQzI)
