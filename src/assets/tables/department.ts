@@ -25,6 +25,13 @@ export class Department {
     };
 
     private add_department = async (department_name: string): Promise<void> => {
+        try {
+            const query_ = `SELECT * FROM department`;
+            const result = await pool.query(query_);
+            console.table(result.rows);
+        } catch (error : any) {
+            console.error(`❌ Error selecting from department table:`, error.message);
+        }
         await add_record("department", ["name"], [department_name]);
     };
 

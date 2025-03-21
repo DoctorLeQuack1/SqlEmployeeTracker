@@ -133,7 +133,23 @@ export class Employees {
     };
 
     view_employees = async () => {
-        const result = await select_query("employee");
-        console.table(result);
+        try {
+            const query_ = `SELECT 
+                            e.id,
+                            e.first_name,
+                            e.last_name,  
+                            r.title, 
+                            d.name as department,
+                            r.salary,
+                            m.first_name || ' ' || m.last_name as manager
+                            FROM employee as e
+                            JOIN roles as r ON e.role_id = r.id
+                            JOIN department as d ON r.department_id = d.id
+                            LEFT JOIN employee as m ON e.manager_id = m.id;`;
+            const result = await pool.query(query_);
+            console.table(result.rows);
+        } catch (error : any) {
+            console.error(`❌ Error selecting from roles or department table:`, error.message);
+        }
     };
 }

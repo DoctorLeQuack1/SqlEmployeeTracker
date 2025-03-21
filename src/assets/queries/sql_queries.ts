@@ -1,6 +1,6 @@
 import { pool } from '../connections.js';
 
-//Genral use queries
+//General use queries
 export const select_query = async (table : string) : Promise<Array<object> | null> => {
     try {
         const query = `SELECT * FROM ${table};`
